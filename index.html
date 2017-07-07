@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Standard meta -->
+    <meta charset="utf-8">
+    <title>AY Google Search (v1.0)</title>
+    <meta name="title" content="Avison Young Google Search">
+    <meta name="author" content="Jack Kasbeer">
+    <meta name="description" content="CSE for Avison Young that allows users to execute multiple 
+    searches at once using a text file">
+
+    <meta name="viewport" content="initial-scale=1.0, width=device-width, maximum-scale=2">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta http-equiv="content-language" content="en">
+
+    <!-- Style imports -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="js/jquery-2.1.4.min.js" type="text/javascript"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="js/script.js" type="text/javascript"></script>
+    <script>
+      $(function() {
+        $("#help-window").draggable();
+      });
+    </script>
+  </head>
+  <body> <!-- ###################### START BODY ###################### -->
+    <span id="back-to-top"></span>
+    <!-- ###########
+         # SEARH BAR
+         ########### -->
+    <section id="control-area" class="initial-contain"> 
+
+      <!-- ### TOP (TITLE) ### -->
+      <div class="top">
+        <h1>AY Google Search</h1>
+      </div>
+
+      <!-- ### MIDDLE (SEARCH CONTROL) ### -->
+      <div class="middle">
+        <div id="search-switch" class="onoffswitch file">
+          <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+          <label class="onoffswitch-label" for="myonoffswitch">
+            <span class="onoffswitch-inner"></span>
+            <span class="onoffswitch-switch"></span>
+          </label>
+        </div>
+        <input id="search-bar" class="text" type="text" placeholder="No file chosen..." required> <!-- .text: placeholder="Google something..." -->
+        <div id="search-button">
+          <span><i class="fa fa-search fa"></i>
+          <input type="button">
+        </div>
+        <input id="file" value="" type="file" accept=".txt"> 
+      </div>
+
+      <!-- ### BOTTOM (SETTINGS) ### -->
+      <div class="bottom">
+        <a type="link" class="fr" href="#help-window" id="help">Help</a> 
+        <!--<a type="link" class="fr" href="">Settings</a>-->
+      </div>
+    </section>
+
+    <div id="help-window" class="ui-widget-content closed">
+      <a type="button" class="fr" href="" id="close-window">X</a> <!-- close help-window -->
+      <!-- INSTRUCTIONS FOR USE -->
+      <h3>Help</h3>
+      <h4>About AY Google Search</h4>
+      <p> Welcome to the AY Google Search tool.  This tool is meant to mimic Google's search engine with the added benefit of being able to Google multiple things at once with a '.txt' file.  A '.txt' file is just raw text; it differs from '.doc', '.docx', and any other file format you're familiar with simply because it doesn't include extraneous features like formatting, style, etc.
+      </p>
+      <h4>File format specifications</h4>
+      <p><em>This is the most important part to searching with a FILE!</em></p>
+      <p>Be sure that you do the following before uploading a file:</p>
+      <ol>
+        <li>Save your file in the '.txt' format.</li>
+        <li>The very first line of the file should be the number of things you want to Google.</li>
+        <li>Every line after should have its own separate search.</li>
+      </ol>
+      <p><em>Example:</em><br>
+        I want to Google shoes, bikes, and foobar as separate searches. So, first I create a file and save it as 'FILENAME.txt' (FILENAME can be anything). Then, I put my searches in the file, with the first line being the number of searches I want to do:
+      </p>
+      <br>
+      <p style="padding-left: 55px;">
+        3<br>
+        shoes<br>
+        bikes<br>
+        foobar<br>
+      </p>
+      <br>
+      <p> Now I'm ready to upload the file!</p>
+      <h4>Using the tool</h4>
+      <ol>
+        <li>Click the switch next to the search bar to change how you search (FILE or TEXT).</li>
+        <li>If you're using a file, click the button under the search bar to select a '.txt' file.<br>
+          <em>Note that it's extremely important your file is saved as in the '.txt' format, and complies with the format specifications listed below!</em></li>
+        <li>If you're just searching one thing, type it into the search bar after switching to a TEXT search.</li>
+        <li>Once you've selected a file or typed in what you want to Google, just click the search button to the right of the text field with the magnifying glass icon.</li>
+        <li>Happy Googling!</li>
+      </ol>
+    </div>
+
+    <!-- #####################
+         # GOOGLE CONTENT AREA
+         ##################### -->
+    <section id="content-area">
+      <p id="loading">Please wait while we Google the contents of this file...</p>
+      <div id="search-results"></div>
+
+      <!-- ###################### SCRIPT FOR SEARCH & PARSE ###################### -->
+      <script src='https://www.google.com/jsapi' type='text/javascript'></script>
+      <script type='text/javascript'>
+        /* Init google */
+        google.load('search', '1', {language: 'en', style: google.loader.themes.V2_DEFAULT});
+
+        /*
+         * google_it - Initialize Google CSE, set up searches based on file/text, then execute.
+         */
+        function google_it() {
+          /* General var's for both types of searches */
+          var ss = $("#search-switch");
+          var view = document.getElementById("content-area");
+          /* Reset content-area for new search */
+          document.getElementById("search-results").innerHTML = '<div id="txt-search"></div>' +
+                                                                '<div id="file-search"></div>';
+          var txtsearch = document.getElementById("txt-search");
+          var filsearch = document.getElementById("file-search");
+          txtsearch.innerHTML = '';
+          filsearch.innerHTML = '';
+
+          /* TEXT SEARCH */
+          if (ss.hasClass('text')) {
+            /* Keywords for search */
+            var txt = $("#search-bar").val();
+            /* Execute search for 'txt' */
+            google.setOnLoadCallback(function() {
+              /* Filter options */
+              var customSearchOptions = {};
+              var orderByOptions = {};
+              /* Populate filter options */
+              orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
+              customSearchOptions['enableOrderBy'] = true;
+              customSearchOptions['orderByOptions'] = orderByOptions;
+              /* Create Google CSE */
+              var customSearchControl = 
+                new google.search.CustomSearchControl('018225018566241067119:p_fd0885xbi', customSearchOptions);
+              customSearchControl.setResultSetSize(5);
+              /* Make the search visible */
+              var options = new google.search.DrawOptions();
+              options.enableSearchResultsOnly();
+              options.setAutoComplete(true);
+              customSearchControl.draw('cse', options);
+              customSearchControl.draw(txtsearch, options);
+              customSearchControl.execute(txt);
+            }, true);
+          }
+          /* FILE SEARCH */
+          else {
+            /* Create a new FileReader & read the specified file into a string */
+            var FR = new FileReader();
+            var qlist = new Array();
+            var tfile = document.getElementById("file").files[0]; // File object
+            FR.readAsText(tfile);
+
+            /* Once reader is ready, split up the result for search */
+            FR.onloadend = function(event) {
+              /* Check for error */
+              if (FR.readyState != 2) { 
+                _l(FR.readyState); 
+                return; 
+              }
+              /* Parse user-selected file into array of search queues */
+              var filestr = event.target.result;
+              qlist = filestr.split('\n');
+            };
+            /* Let user know that results are being obtained */
+            $("#loading").css("display",'inline-block');
+
+            /* Execute search */
+            google.setOnLoadCallback(function() {
+              /* Filter options */
+              var customSearchOptions = {};
+              var orderByOptions = {};
+              /* Populate filter options */
+              orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
+              customSearchOptions['enableOrderBy'] = true;
+              customSearchOptions['orderByOptions'] = orderByOptions;
+              /* Execute search for every line in file */
+              var len = qlist[0]; // first line is num lines (i.e. searches)!
+              for (var i = 1; i <= len; i++) {
+                /* Create element for search to live in */
+                var next = document.createElement("div");
+                    next.id = 'cse'+i;
+                filsearch.appendChild(next);
+                /* Create Google CSE */
+                var customSearchControl = 
+                  new google.search.CustomSearchControl('018225018566241067119:p_fd0885xbi', customSearchOptions);
+                customSearchControl.setResultSetSize(5);
+                /* Make the search visible */
+                var options = new google.search.DrawOptions();
+                options.enableSearchResultsOnly();
+                options.setAutoComplete(true);
+                customSearchControl.draw('cse', options);
+                customSearchControl.draw(next, options);
+                customSearchControl.execute(qlist[i]);
+              }
+              $("#loading").css("display",'none');
+            }, true);
+          }
+        } 
+      </script>
+      <!-- ######################## END OF SCRIPT ######################## -->
+      <style src="css/gstyle.css" rel="stylesheet"></style>
+      <style>
+        /* ### GOOGLE RESULTS WON'T SHOW WITHOUT THESE ### */
+          #content-area { 
+            visibility: visible;
+            position: relative;
+          }
+          .gsc-search-box { 
+            display: block !important; 
+          }
+          .gsc-control-cse > div > * { 
+            visibility: visible !important 
+          }
+          .gsc-control-wrapper-cse form { 
+            display: block !important; 
+          }
+          .gsc-control-cse > div form { 
+            display: block !important; 
+          }
+      </style>
+    </section>
+
+    <!-- #########
+         # FOOTER 
+         #########-->
+    <section id="footer">
+      <!-- ### TOP (PERSONAL BRANDING) ### -->
+      <div class="top">
+        <div>
+          <span><em>"In attempt to create affinity between humans & computers."</em></span>
+          <span>Originally designed & developed by</span>
+          <span id="jk"><a type="brand-link" href="http://jackkasbeer.co">jack kasbeer</a></span>
+        </div>
+      </div>
+
+      <!-- ADD BUTTON TO GO TO TOP -->
+
+      <!-- ### BOTTOM (*OTHER BRANDING*) ### -->
+      <div class="bottom">
+          <!-- float left -->
+        <a type="link" class="fl" href="http://www.avisonyoung.com">Avison Young</a>
+          <!-- float left -->
+        <a type="link" class="fl" href="">About</a> <!-- keep this?? -->
+          <!-- float right -->
+        <a type="link" class="fr" href="http://www.google.com">Powered by Google</a>
+      </div>
+    </section>
+    <!-- ###################### END FOOTER ###################### -->
+    
+    <!-- MISC SCRIPTS -->
+    <script type="text/javascript">
+      /* Make script scrolling look nice */
+      $(function() {
+        $('a[href*=#]:not([href=#])').click(function() {
+          if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+            if (target.length) {
+              $('html,body').animate({
+                scrollTop: target.offset().top
+              }, 1000);
+              return false;
+            }
+          }
+        });
+      });
+      /* Add event listeners for window properties */
+      window.addEventListener('resize', resize_window, true);
+      /* Add an event listeners for the search area control */ 
+      document.getElementById("file").addEventListener('change', update_bar);
+      document.getElementById("search-switch").addEventListener('mousedown', flip_switch);
+      document.getElementById("search-button").addEventListener('mousedown', google_it);
+      document.getElementById("help").addEventListener('mousedown', toggle_help);
+      document.getElementById("close-window").addEventListener('mousedown', toggle_help);
+    </script>
+  </body>  <!-- ###################### END BODY ###################### -->
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

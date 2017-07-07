@@ -1,0 +1,384 @@
+/* Scroll bar for site */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-thumb {    
+  border-radius: 0;
+  background: #ffffff;
+  border: none;
+}
+::-webkit-scrollbar-track-piece {
+  background: rgba(11,67,125, 0.7);
+  border: none;
+}
+
+/* General styles */
+html,
+body
+{
+  margin: 0; padding: 0;
+  width: 100%; min-width: 100%;
+  font-family: "Helvetica Neue", "Helvetica", sans-serif; font-weight: 200;
+}
+
+a { text-decoration: none; }
+a[type='link']
+{
+  color: #01225A; /* AY blue */
+  transition: all 0.1s linear;
+}
+a[type='link']:hover
+{
+  color: #02358c; /* slightly brighter AY blue */
+  text-decoration: underline;
+}
+
+.fl { float: left; }
+.fr { float: right; }
+
+/*****************
+ * CONTROL SECTION
+ *****************/
+
+#control-area
+{
+  top: 0; z-index: 10;
+  width: 100%; margin: 0;
+  background-color: #fff;
+  border-bottom: solid 1px #eee;
+  transition: all 0.3s linear;
+}
+#control-area.initial-contain 
+{ 
+  position: absolute;
+  height: 350px; /* back-up for javascript */ 
+}
+#control-area.stickybar-contain 
+{ 
+  position: fixed; 
+  height: 80px !important; /* override javascript */
+  box-shadow: 1px 1px 2px 1px rgba(20,20,20,0.1);
+}
+
+#control-area .top, 
+#control-area .middle, 
+#control-area .bottom 
+{
+  position: relative;
+  width: 100%; margin: 0; padding: 0;
+}
+
+/***** TOP (TITLE & HELP) *****/
+#control-area .top h1 
+{
+  width: 420px; margin: 0 auto; margin-top: 20px; 
+  text-align: center;
+  font-size: 48px; font-weight: 100;
+  transition: all 0.2s linear;
+}
+#control-area.stickybar-contain .top 
+{
+  height: 0;
+  transition: all 0.3s ease-in-out;
+}
+#control-area.stickybar-contain .top h1
+{ display: none; }
+
+/***** MIDDLE (SEARCH CONTROL) *****/
+#control-area .middle 
+{
+  width: 80%; margin: 25px auto;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+#control-area.stickybar-contain .middle
+{ margin-top: 0; }
+.onoffswitch 
+{
+  display: inline-block;
+  position: relative; width: 98px; top: 14px;
+  -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox 
+{ display: none; }
+.onoffswitch-label 
+{
+  display: block; overflow: hidden; cursor: pointer;
+  border: 2px solid #999999; border-radius: 23px;
+}
+.onoffswitch-inner 
+{
+  display: block; width: 200%; margin-left: -100%;
+  transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after 
+{
+  display: block; float: left; width: 50%; height: 41px; padding: 0; line-height: 41px;
+  font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+  box-sizing: border-box;
+}
+.onoffswitch-inner:before 
+{
+  content: "FILE";
+  padding-left: 10px;
+  background-color: #D32A24; color: #FFFFFF;
+  text-align: left !important;
+}
+.onoffswitch-inner:after 
+{
+  content: "TEXT";
+  padding-right: 10px;
+  background-color: #EEEEEE; color: #999999;
+  text-align: right;
+}
+.onoffswitch-switch 
+{
+  position: absolute; top: 0; bottom: 0; right: 53px;
+  display: block; width: 30px; 
+  margin: 5.5px;
+  background: #FFFFFF;
+  border: 2px solid #999999; border-radius: 23px;
+  transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner 
+{ margin-left: 0; }
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch 
+{ right: 0px; }
+#control-area .middle > input:first-of-type, 
+#control-area .middle > #search-button
+{ /* search-bar and search-button */
+  display: inline-block;
+}
+#control-area .middle > input:first-of-type
+{ /* search-bar */
+  height: 41px; width: 320px; 
+  margin-left: 40px; padding: 0 2px;
+  font-family: "Helvetica Neue"; font-size: 1.4em; font-weight: 200;
+  color: #07427F;
+  outline: none;
+  border: 1px solid #063a6f;
+}
+#control-area .middle > input[type='text']:focus 
+{ /* search-bar focus */
+  outline: none;
+  border: 1px solid #063a6f;
+}
+#control-area .middle > a[type='link'] 
+{ /* back to top link for sticky control bar */
+  position: relative; bottom: 29px;
+  visibility: hidden; float: right; 
+}
+#control-area .middle > input[type='file']:focus
+{ /* file input after click */
+  outline: none; border: none; 
+}
+#control-area .middle > input[type='file']
+{ /* choose file button on initial launch page */
+  display: block;
+  margin: 0 auto; margin-top: 20px;
+}
+#control-area.stickybar-contain .middle > input[type='file']
+{ /* choose file button when results present */
+  display: none;
+}
+#control-area .middle > #search-button
+{ /* search-button */
+  position: relative; top: 13px; right: 5px;
+  height: 43px; 
+  margin: 0 auto; padding: 0;
+  color: #fff;
+}
+#control-area .middle > #search-button:hover 
+{ cursor: pointer; }
+#control-area .middle > #search-button i 
+{ /* magnifying glass icon */
+  position: absolute; left: 40%; top: 11px;
+  display: block;
+}
+#control-area .middle > #search-button input 
+{ /* physical search button */
+  width: 88px; height: 43px;
+  padding: 0 8px;
+  background: #07427F; border: solid 1px #063a6f; 
+  border-top-right-radius: 2px; border-bottom-right-radius: 2px;
+}
+#control-area .middle > #search-button input:focus
+{ outline: none; }
+#control-area .middle > #search-button input:hover 
+{ cursor: pointer; }
+#control-area.stickybar-contain .middle > a[type='link']
+{ visibility: visible; }
+
+/***** BOTTOM (SETTINGS & BUFFER) *****/
+#control-area .bottom 
+{ position: absolute; bottom: 10px; }
+#control-area.stickybar-contain .bottom
+{ display: none; }
+#control-area .bottom a[type='link']
+{ margin-right: 10px; }
+#control-area .bottom a[type='link']:first-of-type
+{ margin-right: 12px; }
+
+
+/*****************
+ * CONTENT SECTION
+ *****************/
+
+#content-area 
+{ 
+  transition: all 0.2s linear;
+}
+#loading
+{ /* loading message for file searches */
+  font-size: 1.1em; 
+  color: #333;
+  margin: 10px auto;
+  width: 400px;
+  text-align: center;
+
+  display: none; /* initially */
+}
+
+
+/*************
+ * HELP WINDOW
+ *************/
+
+#help-window
+{
+  position: absolute; z-index: 100; top: 30px; left: 30px;
+  width: 50%; height: 475px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 5px 3px;
+  background: #fff; border: 1px solid #eee; border-top: 5px solid rgb(209,44,43);
+
+  color: #333; 
+}
+#help-window.closed { display: none; /* not visible until requested */ }
+#help-window.open { display: block; /* show help window */ }
+
+#help-window > a[type='button']
+{
+  font-size: 1.3em;
+  margin-right: 9px; margin-top: 3px;
+}
+#help-window h3
+{
+  margin: 0; padding: 10px; padding-bottom: 4px;
+}
+#help-window h4, 
+#help-window p,
+#help-window ol
+{
+  width: 85%; margin: 0 auto; padding: 0;
+}
+#help-window p,
+#help-window ol li
+{
+  font-size: 0.9em; 
+  margin-top: 3px; margin-bottom: 3px;
+}
+#help-window ol
+{
+  padding-left: 90px;
+}
+#help-window h4
+{
+  color: #444; margin: 6px auto;
+}
+
+
+/****************
+ * FOOTER SECTION
+ ****************/
+
+#footer 
+{
+  position: relative; bottom: 0;
+  width: 100%; height: 300px; /* back-up for javascript */
+  background: #f5f5f5;
+}
+#footer .top,
+#footer .bottom 
+{
+  position: relative;
+  width: 100%; 
+  padding: 2px 0;
+}
+#footer .top 
+{ 
+  top: 80px;
+}
+#footer .top > div 
+{
+  position: relative;
+  width: 340px;
+  margin: 0 auto;
+  text-align: center;
+}
+#footer .top > div span 
+{ 
+  display: block; 
+  color: #666; 
+  font-size: 1em; 
+}
+#footer .top > div span:first-of-type 
+{ 
+  padding-top: 10px; padding-bottom: 20px; 
+}
+#footer .top > div #jk
+{
+  margin: 0; margin-top: 4px;
+  padding: 2px;
+}
+#footer .top > div span a
+{
+  font-size: 1.1em;
+  /* color: #D5281A; */
+  color: #555;
+  transition: color 0.2s linear;
+}
+#footer .top > div span a:hover 
+{
+  cursor: pointer;
+  color: #D5281A; /* AY red */
+}
+#footer .bottom 
+{
+  position: absolute; bottom: 0px;
+
+  margin: 0;
+  padding: 5px 0;
+  background-color: #e5e5e5;
+}
+#footer .bottom > a.fl 
+{ font-size: 0.9em; }
+#footer .bottom > a.fl:first-of-type 
+{ margin-left: 10px; margin-right: 12px; } 
+#footer .bottom > a.fr 
+{ margin-right: 10px; font-size: 0.8em; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

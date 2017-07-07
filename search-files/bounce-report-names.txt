@@ -1,0 +1,185 @@
+184
+Robert	Ryan	Alliance Environmental
+Eric	Hadar	Allied Partners, Inc.
+James	West	American Invesco
+Travis	Pacoe	Anthem Capital Partners
+David	Glickman	Apollo Real Estate Advisors
+Dennis	Somers	Bank One
+Robert	Hawkins	Bentley Company, The
+Jay	Henrichs	Big Bend Development
+Lawrence	Botel	Broadway Partners
+Robert	Clark	Clayco Inc.
+Reynolds	Thompson	Coloniel Properties Trust
+Joseph	Sambuco	Colonnade Properties, LLC
+Michael	Maney	Colonnade Properties, LLC
+Michael	Nortman	Crossroads Development
+Kyle	Jones	DBSI Group
+David	Tran	E Funding
+Bill	Deyo	Goodard Investment Group
+Christopher	Carlton	Goodard Investment Group
+Derek	George	Griffin Partners
+John	Wright	ING Realty Partners
+Jim	Halberg	J&T Holdings
+Benjamin	Rubin	J. P. Morgan Investment Management Inc.
+Chip	Cinamond	J. P. Morgan Investment Management Inc.
+Mike	Green	Jack Parker Corporation, The
+J.	Gainey	Jamestown
+Julie	Schultz	Jamestown
+Gary	Janko	Janko & Wool
+James	Aduna	L & M Investments
+Robert	Cherry	Lennar Partners Inc.
+Thomas	Dujanovic	Levitt Realty & Finance
+Philip	Seifert	LIBERTY CAPITOL
+Lou	Grall	Louis Grall Investment Real Estate
+Keith	Ness	Lowe Enterprises Colorado, Inc.
+Alan	Warnke	Malan Realty Investors, Inc.
+Scott	Rohrman	McMahon Development Group
+Douglas	Barker	Mesirow Financial
+Joseph	Jaffe	Milestone Partners, LLC
+Takuga	Sawabe	NLI Properties Central, Inc.
+Monte	Henige	O'Connor Specialists, LLC
+Mo	Berretini	Omni Development
+Joe	Florczak	ORIX Real Estate Equities, Inc.
+Eric	Maribojoc	Pacific Western
+Chuck	Church	Palmer Group, The
+Sal	Palmisano	Palmisano Company
+John	Vanderzwaag	Pembroke Capital
+Easton	Manson	Pensis Corporation
+Normand	Beaudry	Pensyn Investments LTD
+John	Powell	PM Realty Advisors
+Tom	Conforte	Premisis Group
+Marc	Dore	Quebecor World Inc.
+Mark	Riley	Riley Management
+Donald	Feathers	Roaring Fork Advisors
+David	Monohan	Rockwood Capital
+Duke	Kossolis	Rouse Co.
+Harry	Schreiber	Saleaseco
+Bob	DeSalvo	Sierra Realty Services, Inc.
+Mary	Fedewa	Sprint Finance Corporation
+Ed	Wlodarczk	Tax Strategies Group
+Erwin	Aulis	Transwestern Property Company
+Caroline	Rhetmeyer	Unknown
+CBSSports.com	Last	Unknown
+Michelangelo	DeSimone	Unknown
+Justin	Leonard	Walton Street Capital
+John	Bergman	2000 Development Corp
+David	Sindelar	Acadia Capital Group
+Scott	Lawlor	Allegiance Capital Partners
+Robert	Kazonis	Amcraft Construction
+Ashok	Patel	American Dream Realty
+Larry	Hollin	Arch Street Capital Partners
+Jonathan	Klein	Ashland Properties LLC
+B.	Dempsy	AUBURNDALE PROPERTIES INC.
+Daniel	Cullen	Avid Technology, Inc.
+Tyler	Hilsabeck	Bank of America Merrill Lynch
+Jim	Bremner	Bremner Duke
+Craig	Silvers	Bricks & Mortar Capital
+Dennis	Last	Butterfield Properties
+Chris	Coakley	C Coakley
+Javier	Jimenez	Capital Investment Advisors
+Douglass	Shull	Carey Realty Investments
+Lance	Polen	Carey Realty Investments
+Theodore	Hobson	Carey Realty Investments
+William	Cary	Cary Company
+Mike	Faust	CB Richard Ellis Investors
+Dennis	Cipcich	Cipicich  & Associates
+Bill	Carlstedt	Citimark
+Sonia	Merzon	Clarion Partners
+Stephen	Hansen	Clarion Partners
+Chuck	Elliott	CLE Investments
+Stanley	Link	Corporate Office Properties Trust
+Jeff	Giebelhausen	Cullinan Properties
+Michael	Owens	Cullinan Properties
+Bob	Para	Dan Para Investments
+T	Davis	Davis Real Estate Investment
+Hai	Nguyen	DDHN Enterprise Inc.
+Branko	Kotevsky	Demis Corporation
+Winifred	Merkatz	Dolfann Enterprises, Inc.
+Ronald	Radcliffe	Empire Investments, LLC
+Daniel	Husman	Equibase Capital Partners
+Eleanor	Grunman	Equibase Capital Partners
+Neil	Young	Fair Oaks Properties
+Cathy	Sweeney	Fairways Equities, LLC
+Doug	Heckle	First Commercial Realty Advisors
+Richard	Graham	First Team Nocan Real Estate
+Ed	Mullaney	Frederick Ross Company
+J.	Newman	Fremont Investment & Loan
+Wesley	England	GAF/ELK
+Louis	Gander	Gander Propertuies
+Michael	Morrison	Gardner Carton & Douglas
+Gregg	Fields	GE Capital
+Dan	Raffe	GE Commercial Finance Business Property
+Scott	Ghertner	Ghertner & Co.
+Jeff	Straubel	Greenway Properties
+Steve	Davidiuk	Hallmark Johnson Properties
+Ronald	Kaufman	Harbor Group
+Jason	Mann	Hatfield Philips
+Peter	Conkey	HDC Partners
+Charles	Ecan	Healthcare Property Investors
+Adam	Hearn	Hearn Companies
+Don	Woodworth	Heitman Real Estate Investment Management
+Mark	Moran	Hemisphere Capital Partners LLC
+Mike	Patlovich	High View
+Jack	Berquist	Highcross Group
+Greg	Krause	Invesco Realty Advisors
+Brian	Park	Jamison Services
+John	Manos	Jemco & Assoc
+Herbert	Roth	K & R Management Company
+Ross	Taylor	Kelley Drye & Warren
+Dan	Hess	Key Investment and Management
+John	McDonald	Knightsbridge Company
+Kristen	LaCroix	LaCroix Design
+Wade	Jude	LaSalle Investment Management
+Wade	Judge	LaSalle Investment Management
+Steve	Ferreira	Lennar Partners Inc.
+Kerry	Levin	Levin Associates Architechts
+Derek	Dobrin	Lillibridge Health Trust
+Rex	Noble	Lillibridge Healthcare
+Rick	Scott	Magnum Capital Partners
+Shawn	Spellman	McShane & Company
+Richard	Eichom	Meritex Enterprises
+Robb	Merritt	Merritt Properties, LLC
+Stephen	Mauk	Mid Atlantic Medical Services
+Thomas	Barbera	Mid Atlantic Medical Services
+Bradley	Richardson	Modine Manufacturing
+Greg	Kinder	Modine Manufacturing
+Lorie	Phillips	Montecito Medical
+Timothy	Morris	Morgan Stanley
+Paul	Ross	National Equity
+Robert	Sester	Net Equity Associates
+Bradley	Olson	Olson Capital Investors
+Hiroshi	Nishio	ORIX Real Estate Equities, Inc.
+Scott	Shefman	Premier Equities Inc.
+Jim	Haliwell	Principal Capital Management, LLC
+Liliane	Marceau	PSP Investments
+Matthew	Griffith	Salus Valuation Group
+CCIM	Jenny Lisak	Sara Investment Corp
+Steven	Friedland	Schiff Hardin LLP
+Robb	Chapin	Servant
+Blake	Peeper	Servant Capital
+JIM	SETZER	Setzer Properties
+Andrew	Lappin	Shetland Properties
+Randy	Farrar	Swanson Property Management
+Benjamin	Adams	Ten Capital Management
+Peter	Tsolinas	TMA Group Development
+Patrick	Tobin	Tobin Real Estate Advisors, Inc.
+Robert	Ramirez	TOWBES GROUP, THE
+Arnold	Kimmel	Transition Healthcare
+Richard	Gabriel	Tycore
+Trish	Ullrich	Ullrich Management
+Chris	Seth	Universal Scientific
+David	Kelley	Unknown
+Harry	Reitz	Unknown
+John	Lindemann	Unknown
+Kevin	Donahue	Unknown
+King	George	Unknown
+Manijee	Bayzee	Unknown
+Paul	Kolosso	Unknown
+WNJ	May	Unknown
+Jim	Otterback	VenCom Commercial Properties
+Peggy	May	Vestin Group
+Joel	Williamson	Wells Real Estate Funds
+Charles	Frank	ZFO Properties, LLC
+Jim	Leider	Leider Greenhouses
+Bruce	Watters	Unknown
+Thomas	Hofheimer	Fidelity Investments
